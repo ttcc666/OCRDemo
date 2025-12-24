@@ -25,6 +25,9 @@ namespace OCRDemo
             _availableEngines = new List<IOcrEngine>
             {
                 new SdcbPaddleOcrEngine(),
+                new PaddleOcrSharpEngine(),  // 新增: PaddleOCRSharp 离线引擎
+                new RapidOcrEngine(),         // 新增: RapidOCR - 基于 ONNX 的高性能引擎
+                new EmguCvOcrEngine(),       // 新增: Emgu CV OCR - 带图像预处理增强
                 new TesseractOcrEngine()
             };
         }

@@ -1,11 +1,31 @@
 {
   "permissions": {
     "allow": [
-      "Bash(Test-Path \"imgs\")",
-      "Bash(dotnet build:*)",
-      "Bash(Get-Location)",
+      "Bash(Select-Object FullName)",
+      "mcp__memory__create_entities",
+      "mcp__memory__create_relations",
+      "Bash(dotnet add \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" package PaddleOCRSharp --version 6.0.0)",
+      "mcp___modelcontextprotocol_server-memory__search_nodes",
+      "Bash(dotnet list \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" package)",
+      "WebSearch",
+      "Bash(dotnet add \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" package Paddle.Runtime.win_x64)",
+      "mcp___modelcontextprotocol_server-memory__create_entities",
       "mcp__exa__get_code_context_exa",
-      "WebSearch"
-    ]
+      "mcp__exa__web_search_exa",
+      "mcp__fetch__fetch",
+      "Bash(dotnet add \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" package Emgu.CV --version 4.12.0.5764)",
+      "Bash(dotnet add \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" package Emgu.CV.runtime.windows --version 4.12.0.5764)",
+      "mcp___modelcontextprotocol_server-memory__create_relations",
+      "mcp___modelcontextprotocol_server-memory__add_observations",
+      "Bash(dotnet build \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" --no-restore)",
+      "Bash(Get-ChildItem -Path \"D:\\Demo\\OCRDemo\\bin\\Debug\\net8.0-windows\\tessdata\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object Name, Length)",
+      "Bash(Get-ChildItem -Path \"D:\\Demo\\OCRDemo\\tessdata\" -ErrorAction SilentlyContinue)",
+      "Bash(dotnet add \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" package RapidOcrNet --version 1.0.0)",
+      "Bash(dotnet run --project \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\" --help)",
+      "Bash(dotnet nuget locals all --list)"
+    ],
+    "deny": [],
+    "ask": []
   }
 }
