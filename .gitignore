@@ -1,0 +1,93 @@
+# .NET Core / .NET Framework
+bin/
+obj/
+out/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.userprefs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Tesseract OCR 训练数据文件（约 67MB，不应提交到 git）
+Tesseract/
+tessdata/
+*.traineddata
+
+# PaddleOCR 模型文件（自动下载，不应提交）
+inference/
+*.pdmodel
+*.pdiparams
+*.pdiparams.info
+
+# 图片文件（测试用）
+imgs/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+!*.png
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Backup files
+*.bak
+*.backup
+*~

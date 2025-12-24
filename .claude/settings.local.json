@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Test-Path \"imgs\")",
+      "Bash(dotnet build:*)",
+      "Bash(Get-Location)",
+      "mcp__exa__get_code_context_exa",
+      "WebSearch"
+    ]
+  }
+}
