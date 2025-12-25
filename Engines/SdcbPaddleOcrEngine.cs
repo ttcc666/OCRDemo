@@ -4,6 +4,8 @@ using Sdcb.PaddleInference;
 using Sdcb.PaddleOCR;
 using Sdcb.PaddleOCR.Models;
 using Sdcb.PaddleOCR.Models.Online;
+using Point = System.Drawing.Point;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace OCRDemo.Engines
 {
@@ -81,13 +83,44 @@ namespace OCRDemo.Engines
                         PaddleOcrResult ocrResult = _engine.Run(src);
                         sw.Stop();
 
+                        // 构建结构化文本块列表
+                        var textBlocks = new List<OcrTextBlock>();
+                        foreach (var region in ocrResult.Regions)
+                        {
+                            // 从 RotatedRect 获取边界框
+                            var rect = region.Rect;
+                            var size = rect.Size;
+                            var center = rect.Center;
+
+                            textBlocks.Add(new OcrTextBlock
+                            {
+                                Text = region.Text,
+                                Confidence = (float)region.Score,
+                                BoxPoints = new List<Point>
+                                {
+                                    new Point((int)(center.X - size.Width / 2), (int)(center.Y - size.Height / 2)),
+                                    new Point((int)(center.X + size.Width / 2), (int)(center.Y - size.Height / 2)),
+                                    new Point((int)(center.X + size.Width / 2), (int)(center.Y + size.Height / 2)),
+                                    new Point((int)(center.X - size.Width / 2), (int)(center.Y + size.Height / 2))
+                                },
+                                BoundingBox = new Rectangle(
+                                    (int)(center.X - size.Width / 2),
+                                    (int)(center.Y - size.Height / 2),
+                                    (int)size.Width,
+                                    (int)size.Height
+                                ),
+                                BlockType = OcrTextBlockType.Line
+                            });
+                        }
+
                         return new OcrResult
                         {
                             Success = true,
                             Text = ocrResult.Text,
                             RegionCount = ocrResult.Regions.Length,
                             ElapsedMilliseconds = sw.ElapsedMilliseconds,
-                            EngineName = Name
+                            EngineName = Name,
+                            TextBlocks = textBlocks
                         };
                     }
                 }

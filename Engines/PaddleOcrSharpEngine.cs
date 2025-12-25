@@ -114,13 +114,40 @@ namespace OCRDemo.Engines
                         // 提取所有文本
                         string allText = string.Join("\n", ocrResult.TextBlocks.Select(tb => tb.Text));
 
+                        // 构建结构化文本块列表
+                        var textBlocks = new List<OcrTextBlock>();
+                        foreach (var block in ocrResult.TextBlocks)
+                        {
+                            // 计算边界框
+                            var points = block.BoxPoints;
+                            int minX = points.Min(p => p.X);
+                            int minY = points.Min(p => p.Y);
+                            int maxX = points.Max(p => p.X);
+                            int maxY = points.Max(p => p.Y);
+
+                            textBlocks.Add(new OcrTextBlock
+                            {
+                                Text = block.Text,
+                                Confidence = block.Score,
+                                BoxPoints = points.Select(p => new System.Drawing.Point(p.X, p.Y)).ToList(),
+                                BoundingBox = new System.Drawing.Rectangle(
+                                    minX,
+                                    minY,
+                                    maxX - minX,
+                                    maxY - minY
+                                ),
+                                BlockType = OcrTextBlockType.Line
+                            });
+                        }
+
                         return new OcrResult
                         {
                             Success = ocrResult.TextBlocks.Count > 0,
                             Text = allText,
                             RegionCount = ocrResult.TextBlocks.Count,
                             ElapsedMilliseconds = sw.ElapsedMilliseconds,
-                            EngineName = Name
+                            EngineName = Name,
+                            TextBlocks = textBlocks
                         };
                     }
                 }

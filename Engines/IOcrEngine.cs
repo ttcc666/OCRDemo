@@ -50,12 +50,12 @@ namespace OCRDemo.Engines
         public bool Success { get; set; }
 
         /// <summary>
-        /// 识别到的文本
+        /// 识别到的文本（所有文本块拼接，用于向后兼容）
         /// </summary>
         public string Text { get; set; } = string.Empty;
 
         /// <summary>
-        /// 文本区域数量
+        /// 文本区域数量（用于向后兼容，建议使用 TextBlocks.Count）
         /// </summary>
         public int RegionCount { get; set; }
 
@@ -73,5 +73,10 @@ namespace OCRDemo.Engines
         /// 使用的引擎名称
         /// </summary>
         public string EngineName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 结构化文本块列表（包含文本、置信度、坐标信息）
+        /// </summary>
+        public List<OcrTextBlock> TextBlocks { get; set; } = new();
     }
 }

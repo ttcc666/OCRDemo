@@ -25,10 +25,7 @@ namespace OCRDemo
             _availableEngines = new List<IOcrEngine>
             {
                 new SdcbPaddleOcrEngine(),
-                new PaddleOcrSharpEngine(),  // 新增: PaddleOCRSharp 离线引擎
-                new RapidOcrEngine(),         // 新增: RapidOCR - 基于 ONNX 的高性能引擎
-                new EmguCvOcrEngine(),       // 新增: Emgu CV OCR - 带图像预处理增强
-                new TesseractOcrEngine()
+                new PaddleOcrSharpEngine()
             };
         }
 
@@ -232,6 +229,24 @@ namespace OCRDemo
                     output += $"✓ 使用引擎: {result.EngineName}\n";
                     output += $"✓ 识别到 {result.RegionCount} 个文本区域\n";
                     output += new string('=', 50) + "\n\n";
+
+                    // 如果有结构化文本块信息，显示详细信息
+                    if (result.TextBlocks.Count > 0)
+                    {
+                        output += "【文本块详细信息】\n\n";
+                        for (int i = 0; i < result.TextBlocks.Count; i++)
+                        {
+                            var block = result.TextBlocks[i];
+                            output += $"文本块 #{i + 1}:\n";
+                            output += $"  文本: {block.Text}\n";
+                            output += $"  置信度: {block.ConfidencePercent}\n";
+                            output += $"  坐标: {block.BoundingBoxStr}\n";
+                            output += "\n";
+                        }
+                        output += new string('=', 50) + "\n\n";
+                    }
+
+                    output += "【识别文本】\n\n";
                     output += result.Text;
 
                     TxtResult.Text = output;
