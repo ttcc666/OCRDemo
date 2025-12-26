@@ -25,7 +25,9 @@ namespace OCRDemo
             _availableEngines = new List<IOcrEngine>
             {
                 new SdcbPaddleOcrEngine(),
-                new PaddleOcrSharpEngine()
+                new PaddleOcrSharpEngine(),
+                new TesseractOcrEngine(),
+                new EmguCvOcrEngine()
             };
         }
 

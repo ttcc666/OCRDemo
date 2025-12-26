@@ -17,6 +17,13 @@
     <PackageReference Include="Sdcb.PaddleOCR" Version="3.0.1" />
     <PackageReference Include="Sdcb.PaddleOCR.Models.LocalV4" Version="2.7.0.1" />
     <PackageReference Include="Sdcb.PaddleOCR.Models.Online" Version="3.0.1" />
+
+    <!-- Tesseract OCR -->
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+
+    <!-- EmguCV OCR -->
+    <PackageReference Include="Emgu.CV" Version="4.10.0.5667" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.10.0.5667" />
   </ItemGroup>
 
 </Project>
