@@ -30,7 +30,8 @@
       "Bash(del \"D:\\Demo\\OCRDemo\\Engines\\EmguCvOcrEngine.cs\")",
       "Bash(del \"D:\\Demo\\OCRDemo\\Engines\\RapidOcrEngine.cs\")",
       "Bash(del \"D:\\Demo\\OCRDemo\\Engines\\TesseractOcrEngine.cs\")",
-      "Bash(dotnet build \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\")"
+      "Bash(dotnet build \"D:\\Demo\\OCRDemo\\OCRDemo.csproj\")",
+      "Bash(Get-Location)"
     ],
     "deny": [],
     "ask": []
