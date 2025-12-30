@@ -56,9 +56,9 @@ namespace OCRDemo.Engines
                     {
                         cpu_math_library_num_threads = 10,  // 并发线程数
                         enable_mkldnn = true,               // 启用 MKL-DNN 加速
-                        cls = false,                        // 禁用文字方向分类 (提升速度)
+                        cls = true,                        // 禁用文字方向分类 (提升速度)
                         det = true,                         // 启用检测
-                        use_angle_cls = false,              // 禁用 180 度旋转分类
+                        use_angle_cls = true,              // 禁用 180 度旋转分类
                         det_db_score_mode = true            // 使用多边形文本区域
                     };
 
